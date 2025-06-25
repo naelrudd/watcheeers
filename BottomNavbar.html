@@ -1,0 +1,37 @@
+<nav id="main-bottom-nav" class="bottom-nav d-flex align-items-center border-top bg-white">
+    <div class="navbar-title ms-3 fw-bold" style="font-size:1.1em;">Watchers To</div>
+    <div class="navbar-menu d-flex flex-grow-1 justify-content-end align-items-center">
+        <button type="button" aria-label="Home" class="d-flex align-items-center gap-2 ms-2">
+            <i class="fas fa-home fs-4"></i><span class="d-none d-md-inline">Home</span>
+        </button>
+        <button type="button" aria-label="Favorites" class="d-flex align-items-center gap-2 ms-2">
+            <i class="fas fa-star fs-4"></i><span class="d-none d-md-inline">Favorites</span>
+        </button>
+        <button type="button" aria-label="Movies" class="d-flex align-items-center gap-2 ms-2">
+            <i class="fas fa-film fs-4"></i><span class="d-none d-md-inline">Movies</span>
+        </button>
+        <button type="button" aria-label="Groups" class="d-flex align-items-center gap-2 ms-2">
+            <i class="fas fa-users fs-4"></i><span class="d-none d-md-inline">Groups</span>
+        </button>
+    </div>
+</nav>
+<script>
+function setupBottomNavbar() {
+    const nav = document.getElementById('main-bottom-nav');
+    if (!nav) return;
+    const btns = nav.querySelectorAll('.navbar-menu button');
+    if (btns.length < 4) return;
+
+    btns[0].onclick = () => alert('waduh, fitur ini belum ada!');
+    btns[1].onclick = () => window.location.href = 'RankingPagePopular.html';
+    btns[2].onclick = () => window.location.href = 'Watchlist.html';
+    btns[3].onclick = () => alert('waduh, fitur ini belum ada!');
+
+    // Aktifkan penanda sesuai halaman
+    const path = window.location.pathname;
+    btns.forEach(btn => btn.classList.remove('active-nav'));
+    if (path.endsWith('Watchlist.html')) btns[2].classList.add('active-nav');
+    else if (path.endsWith('RankingPagePopular.html') || path.endsWith('AllGenre.html')) btns[1].classList.add('active-nav');
+}
+setupBottomNavbar();
+</script>
